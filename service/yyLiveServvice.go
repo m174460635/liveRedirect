@@ -7,11 +7,6 @@ import (
 	"regexp"
 )
 
-type Data struct {
-	hls   string
-	code  int
-	width int
-}
 type YYLiveService struct {
 }
 
