@@ -31,7 +31,7 @@ func main() {
 		url, err := serviceMap[key].GetPlayUrl(roomId)
 		if err != nil {
 			fmt.Println(err.Error())
-			c.String(200, "Hello, Geektutu")
+			c.String(200, err.Error())
 			return
 		}
 		fmt.Println(url)
