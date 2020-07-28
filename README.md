@@ -1,5 +1,5 @@
 # liveRedirect
-用于提供http重定向访问yy/huya直播间直播流的作用，让它可以在potplayerer之类的播放器中直接播放，不需要在网页中忍受各种弹窗浮层。
+用于提供http重定向访问yy/huya直播间M3U8,FLV直播流的作用，让它可以在potplayerer之类的播放器中直接播放，不需要在网页中忍受各种弹窗浮层。
 
 http://项目ip:端口/huya/房间id 的形式在potplayerer打开
 
