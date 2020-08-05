@@ -1,7 +1,7 @@
 # liveRedirect
 用于提供http重定向访问yy/huya直播间M3U8,FLV直播流的作用，让它可以在potplayerer之类的播放器中直接播放，不需要在网页中忍受各种弹窗浮层。
 
-http://项目ip:端口/huya/房间id 的形式在potplayerer打开
+http://项目ip:端口/platformName/房间id 的形式在potplayerer打开
 
 ## 编译&运行
 1、安装golang环境
@@ -11,6 +11,17 @@ http://项目ip:端口/huya/房间id 的形式在potplayerer打开
 3、go build -o lr(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
 
 4、执行lr (默认监听了5000端口)
+
+### 已支持直播平台
+| platformName |  平台| 
+| :-----| ----: | 
+| huya | 虎牙 | 
+| yy | yy | 
+| huajiao | 花椒 | 
+| 2cp | 棉花糖直播 | 
+| zhanqi | 战旗 | 
+| 51lm | 羚萌直播 | 
+
 
 ### demo
 http://170.178.163.226:5000/huya/774810
