@@ -16,6 +16,7 @@ func initServiceMap() map[string]service.LiveService {
 	serviceMap["2cp"] = new(service.SpunSugarLiveService)
 	serviceMap["zhanqi"] = new(service.ZhanqiLiveService)
 	serviceMap["kugou"] = new(service.KugouLiveService)
+	serviceMap["douyu"] = new(service.DouyuLiveService)
 	return serviceMap
 }
 func main() {
