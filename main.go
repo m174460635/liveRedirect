@@ -13,6 +13,7 @@ func initServiceMap() map[string]service.LiveService {
 	serviceMap["huya"] = new(service.HuyaLiveService)
 	serviceMap["yy"] = new(service.YYLiveService)
 	serviceMap["huajiao"] = new(service.HuajiaoLiveService)
+	serviceMap["2cp"] = new(service.SpunSugarLiveService)
 	return serviceMap
 }
 func main() {
