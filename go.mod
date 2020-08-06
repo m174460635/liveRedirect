@@ -7,5 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/json-iterator/go v1.1.10
 	github.com/markbates/pkger v0.17.0
+	github.com/robertkrimen/otto v0.0.0-20191219234010-c382bd3c16ff
+	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 	rogchap.com/v8go v0.2.0
 )

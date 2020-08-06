@@ -7,9 +7,9 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/markbates/pkger"
 	"io/ioutil"
+	"liveRedirect/jsengine"
 	"net/url"
 	"regexp"
-	"rogchap.com/v8go"
 	"strings"
 	"time"
 )
@@ -48,16 +48,13 @@ func (s *IqiyiLiveService) GetPlayUrl(key string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	iqiyijsText := string(content)
-	ctx, _ := v8go.NewContext(nil)
-	ctx.RunScript(iqiyijsText, "test.js")
-	vf, err := ctx.RunScript("cmd5x('"+ba+"')", "test.js")
+	vf, err := jsengine.RunJSFunc(string(content), "cmd5x", ba)
 	if err != nil {
 		fmt.Println(err.Error())
 		return "", err
 	}
 	p := requests.Params{
-		"vf": vf.String(),
+		"vf": vf,
 	}
 	res, err = requests.Get("https://live.video.iqiyi.com"+ba, p)
 	if err != nil {
