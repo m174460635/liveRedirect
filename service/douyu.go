@@ -2,7 +2,6 @@ package service
 
 import (
 	"errors"
-	"fmt"
 	"github.com/asmcos/requests"
 	jsoniter "github.com/json-iterator/go"
 	"regexp"
@@ -31,7 +30,7 @@ func getPreUrl(rid string, tt string) string {
 		"did": "10000000000000000000000000001501",
 	}
 	tt = "1596636061448"
-	auth := service.GetMD5Hash(rid + tt)
+	auth := GetMD5Hash(rid + tt)
 	header := requests.Header{
 		"content-type": "application/x-www-form-urlencoded",
 		"rid":          rid,

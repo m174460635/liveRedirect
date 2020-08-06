@@ -15,3 +15,4 @@
 # vendor/
 .idea/
 /liveRedirect
+main_test*.go
