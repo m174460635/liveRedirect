@@ -8,9 +8,18 @@ http://项目ip:端口/platformName/房间id 的形式在potplayerer打开
 
 2、go mod tidy（好像是下载依赖的命令，我没试过，我都是用goland来开发自动下载依赖的）
 
-3、go build -o lr(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
+3[optional]、如果更新了资源文件，需要才需要执行以下命令        
+```shell script
+# 安装pkger指令
+go get github.com/markbates/pkger/cmd/pkger
+# 执行pkger打包
+pkger
+# 这里会生成或更新pkged.go
+``` 
 
-4、执行lr (默认监听了5000端口)
+4、go build -o lr(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
+
+5、执行lr (默认监听了5000端口)
 
 ### 已支持直播平台
 | platformName |  平台| 
