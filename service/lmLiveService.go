@@ -1,7 +1,6 @@
 package service
 
 import (
-	"crypto/md5"
 	"errors"
 	"fmt"
 	"github.com/asmcos/requests"
@@ -14,7 +13,7 @@ type LMLiveService struct {
 }
 
 func g(d, key string) string {
-	return fmt.Sprintf("%x", md5.Sum([]byte(d+"#programId="+key+"#Ogvbm2ZiKE")))
+	return GetMD5Hash(d+"#programId="+key+"#Ogvbm2ZiKE")
 }
 
 func (s *LMLiveService) GetPlayUrl(key string) (string, error) {
