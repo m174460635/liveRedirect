@@ -7,6 +7,29 @@ import (
 	"io/ioutil"
 )
 
+var serviceMap = make(map[string]LiveService)
+
+func initServiceMap() map[string]LiveService {
+	//服务列表
+	serviceMap["huya"] = new(HuyaLiveService)
+	serviceMap["yy"] = new(YYLiveService)
+	serviceMap["huajiao"] = new(HuajiaoLiveService)
+	serviceMap["2cp"] = new(SpunSugarLiveService)
+	serviceMap["zhanqi"] = new(ZhanqiLiveService)
+	serviceMap["kugou"] = new(KugouLiveService)
+	serviceMap["douyu"] = new(DouyuLiveService)
+	serviceMap["51lm"] = new(LMLiveService)
+	//serviceMap["iqiyi"] = new(IqiyiLiveService)
+	return serviceMap
+}
+func GetServiceMap() map[string]LiveService {
+	if len(serviceMap) == 0 {
+		initServiceMap()
+	}
+	return serviceMap
+
+}
+
 type LiveService interface {
 	GetPlayUrl(key string) (string, error)
 }

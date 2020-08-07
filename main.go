@@ -7,23 +7,9 @@ import (
 	"net/http"
 )
 
-func initServiceMap() map[string]service.LiveService {
-	//服务列表
-	serviceMap := make(map[string]service.LiveService)
-	serviceMap["huya"] = new(service.HuyaLiveService)
-	serviceMap["yy"] = new(service.YYLiveService)
-	serviceMap["huajiao"] = new(service.HuajiaoLiveService)
-	serviceMap["2cp"] = new(service.SpunSugarLiveService)
-	serviceMap["zhanqi"] = new(service.ZhanqiLiveService)
-	serviceMap["kugou"] = new(service.KugouLiveService)
-	serviceMap["douyu"] = new(service.DouyuLiveService)
-	serviceMap["51lm"] = new(service.LMLiveService)
-	//serviceMap["iqiyi"] = new(service.IqiyiLiveService)
-	return serviceMap
-}
 func main() {
 	//初始化服务列表
-	serviceMap := initServiceMap()
+	serviceMap := service.GetServiceMap()
 
 	//启动web服务
 	r := gin.Default()
