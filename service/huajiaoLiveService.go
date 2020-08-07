@@ -34,3 +34,6 @@ func (s *HuajiaoLiveService) GetPlayUrl(key string) (string, error) {
 
 	return realUrl, nil
 }
+func init() {
+	RegisterService("huajiao", new(HuajiaoLiveService))
+}

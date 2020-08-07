@@ -3,35 +3,23 @@ package service
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
 	"github.com/markbates/pkger"
 	"io/ioutil"
 )
 
-var serviceMap = make(map[string]LiveService)
-
-func initServiceMap() map[string]LiveService {
-	//服务列表
-	serviceMap["huya"] = new(HuyaLiveService)
-	serviceMap["yy"] = new(YYLiveService)
-	serviceMap["huajiao"] = new(HuajiaoLiveService)
-	serviceMap["2cp"] = new(SpunSugarLiveService)
-	serviceMap["zhanqi"] = new(ZhanqiLiveService)
-	serviceMap["kugou"] = new(KugouLiveService)
-	serviceMap["douyu"] = new(DouyuLiveService)
-	serviceMap["51lm"] = new(LMLiveService)
-	//serviceMap["iqiyi"] = new(IqiyiLiveService)
-	return serviceMap
-}
-func GetServiceMap() map[string]LiveService {
-	if len(serviceMap) == 0 {
-		initServiceMap()
-	}
-	return serviceMap
-
-}
-
 type LiveService interface {
 	GetPlayUrl(key string) (string, error)
+}
+
+var serviceMap = make(map[string]LiveService)
+
+func GetServiceMap() map[string]LiveService {
+	return serviceMap
+}
+func RegisterService(path string, s LiveService) {
+	serviceMap[path] = s
+	fmt.Println("加载：" + path + " 服务")
 }
 
 func GetMD5Hash(text string) string {

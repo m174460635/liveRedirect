@@ -13,7 +13,7 @@ type LMLiveService struct {
 }
 
 func g(d, key string) string {
-	return GetMD5Hash(d+"#programId="+key+"#Ogvbm2ZiKE")
+	return GetMD5Hash(d + "#programId=" + key + "#Ogvbm2ZiKE")
 }
 
 func (s *LMLiveService) GetPlayUrl(key string) (string, error) {
@@ -53,4 +53,7 @@ func (s *LMLiveService) GetPlayUrl(key string) (string, error) {
 		return "", errors.New("未开播")
 	}
 	return json.Get([]byte(resText), "data", "playUrl").ToString(), nil
+}
+func init() {
+	RegisterService("51lm", new(LMLiveService))
 }

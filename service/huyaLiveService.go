@@ -71,3 +71,6 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 
 	return "", nil
 }
+func init() {
+	RegisterService("huya", new(HuyaLiveService))
+}

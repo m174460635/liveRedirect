@@ -38,3 +38,6 @@ func (s *KugouLiveService) GetPlayUrl(key string) (string, error) {
 	url := d.Get("httpshls").Get(0).ToString()
 	return url, nil
 }
+func init() {
+	RegisterService("kugou", new(KugouLiveService))
+}

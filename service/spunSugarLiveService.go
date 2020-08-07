@@ -32,3 +32,6 @@ func (s *SpunSugarLiveService) GetPlayUrl(key string) (string, error) {
 	}
 	return realUrl, nil
 }
+func init() {
+	RegisterService("2cp", new(SpunSugarLiveService))
+}

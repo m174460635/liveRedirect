@@ -46,3 +46,6 @@ func (s *ZhanqiLiveService) GetPlayUrl(key string) (string, error) {
 
 	return "http://www.baidu.com", nil
 }
+func init() {
+	RegisterService("zhanqi", new(ZhanqiLiveService))
+}

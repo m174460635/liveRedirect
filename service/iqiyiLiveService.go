@@ -75,3 +75,6 @@ func (s *IqiyiLiveService) GetPlayUrl(key string) (string, error) {
 	realUrl = strings.Replace(realUrl, "hlslive.video.iqiyi.com", "m3u8live.video.iqiyi.com", 1)
 	return realUrl, nil
 }
+func init() {
+	RegisterService("yy", new(YYLiveService))
+}
