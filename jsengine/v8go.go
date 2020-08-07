@@ -1,4 +1,4 @@
-// +build !otto
+// +build darwin
 
 package jsengine
 
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func RunJSFunc(jsContext, jsFunc string, args...string) (string, error) {
+func RunJSFunc(jsContext, jsFunc string, args ...string) (string, error) {
 	ctx, _ := v8go.NewContext(nil)
 	ctx.RunScript(jsContext, "test.js")
 	strArgs := []string{}
@@ -16,7 +16,7 @@ func RunJSFunc(jsContext, jsFunc string, args...string) (string, error) {
 		newFormat := fmt.Sprintf("'%s'", arg)
 		strArgs = append(strArgs, newFormat)
 	}
-	callfunc := jsFunc+"("+strings.Join(strArgs, ",")+")"
+	callfunc := jsFunc + "(" + strings.Join(strArgs, ",") + ")"
 	result, err := ctx.RunScript(callfunc, "test.js")
 	if err != nil {
 		fmt.Println(err.Error())
