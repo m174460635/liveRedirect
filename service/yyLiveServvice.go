@@ -39,3 +39,6 @@ func (s *YYLiveService) GetPlayUrl(key string) (string, error) {
 
 	return "", nil
 }
+func init() {
+	RegisterService("yy", new(YYLiveService))
+}

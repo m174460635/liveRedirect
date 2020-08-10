@@ -76,5 +76,5 @@ func (s *IqiyiLiveService) GetPlayUrl(key string) (string, error) {
 	return realUrl, nil
 }
 func init() {
-	RegisterService("yy", new(YYLiveService))
+	RegisterService("iqiyi", new(IqiyiLiveService))
 }
