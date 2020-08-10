@@ -30,6 +30,7 @@ pkger
 | 2cp | 棉花糖直播 | 
 | zhanqi | 战旗 | 
 | 51lm | 羚萌直播 | 
+| douyu| 斗鱼 | 
 
 
 ### demo
