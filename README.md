@@ -39,6 +39,12 @@ pkger
 | bilibili| bilibili直播 |
 | yuanbobo | 热猫直播 |  
 | xunlei | 迅雷直播 |  
+| woxiu | 我秀直播 |  
+| yizhibo | 一直播 |  
+| mi | 小米直播 |  
+| v6cn | 六房间直播 |  
+| toho | 星光直播 |  
+| qie | 企鹅直播 |  
 
 
 ### demo
