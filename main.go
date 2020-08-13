@@ -12,6 +12,7 @@ func main() {
 	serviceMap := service.GetServiceMap()
 
 	//启动web服务
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/:key/:id", func(c *gin.Context) {
 		key := c.Param("key")

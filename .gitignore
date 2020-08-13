@@ -16,3 +16,4 @@
 .idea/
 /liveRedirect
 main_test*.go
+lr

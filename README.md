@@ -45,6 +45,7 @@ pkger
 | v6cn | 六房间直播 |  
 | toho | 星光直播 |  
 | qie | 企鹅直播 |  
+| youku | 优酷直播 |  
 
 
 ### demo
