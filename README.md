@@ -46,6 +46,11 @@ pkger
 | toho | 星光直播 |  
 | qie | 企鹅直播 |  
 | youku | 优酷直播 |  
+| showself | 秀色直播 |  
+| renren | 人人直播 |  
+| 56qf | 56千帆直播 |  
+| pps | PPS奇秀直播 |  
+| now | NOW直播 |  
 
 
 ### demo
