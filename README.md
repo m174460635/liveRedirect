@@ -51,6 +51,8 @@ pkger
 | 56qf | 56千帆直播 |  
 | pps | PPS奇秀直播 |  
 | now | NOW直播 |  
+| longzhu | 龙珠直播 |  
+| lehai | 乐嗨直播 |  
 
 
 ### demo
