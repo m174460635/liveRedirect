@@ -53,6 +53,9 @@ pkger
 | now | NOW直播 |  
 | longzhu | 龙珠直播 |  
 | lehai | 乐嗨直播 |  
+| kk | KK直播 |  
+| immomo | 陌陌直播 |  
+| inke | 映客直播 |  
 
 
 ### demo
