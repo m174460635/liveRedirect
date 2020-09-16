@@ -17,3 +17,4 @@
 /liveRedirect
 main_test*.go
 lr
+/dist

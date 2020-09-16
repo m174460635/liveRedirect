@@ -1,4 +1,4 @@
-// +build darwin
+// +build darwin darwin_amd64
 
 package jsengine
 
