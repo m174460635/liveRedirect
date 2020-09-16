@@ -16,6 +16,7 @@ go get github.com/markbates/pkger/cmd/pkger
 pkger
 # 这里会生成或更新pkged.go
 ``` 
+4、需要下载依赖[`goreleaser`](https://goreleaser.com/)
 
 4、go build -o lr(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
 
