@@ -1,4 +1,4 @@
-// +build darwin darwin_amd64
+// +build !linux
 
 package jsengine
 
