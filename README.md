@@ -18,9 +18,9 @@ pkger
 ``` 
 4、需要下载依赖[`goreleaser`](https://goreleaser.com/)
 
-4、go build -o lr(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
+5、`goreleaser --snapshot --skip-publish --rm-dist build `(如果是交叉编译，需要设置编译平台，比如linux :SET GOOS=linux、 SET GOARCH=amd64)
 
-5、执行lr (默认监听了5000端口)
+6、执行lr (默认监听了5000端口)
 
 ### 已支持直播平台
 | platformName |  平台| 
@@ -31,7 +31,6 @@ pkger
 | 2cp | 棉花糖直播 | 
 | zhanqi | 战旗 | 
 | 51lm | 羚萌直播 | 
-| douyu| 斗鱼 | 
 | 9xiu| 九秀 | 
 | 173| 艺气山直播 | 
 | 17| 17直播 |

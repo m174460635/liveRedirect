@@ -7,8 +7,10 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-  binary: lr
-  - env:
+  - main: main.go
+    id: liveRedirect
+    binary: lr
+    env:
       - CGO_ENABLED=0
     goos:
       - linux
@@ -24,7 +26,8 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 snapshot:
-  name_template: "{{ .Tag }}-next"
+#  name_template: "{{ .Tag }}-next"
+  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Tag }}"
 changelog:
   sort: asc
   filters:
