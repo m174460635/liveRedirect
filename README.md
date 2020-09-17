@@ -26,6 +26,12 @@ pkger
 
 6、执行lr (默认监听了5000端口)
 
+## 本地docker编译使用
+```shell script
+docker build -t linsongze/liveredirect:1.0 .
+docker run -d -p5000:5000 linsongze/liveredirect:1.0
+```
+
 ### 已支持直播平台
 | platformName |  平台| 
 | :-----| ----: | 
