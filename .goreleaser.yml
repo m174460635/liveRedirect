@@ -7,17 +7,18 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
+  binary: lr
   - env:
       - CGO_ENABLED=0
     goos:
       - linux
-#      - windows
-#      - darwin
+      - windows
+      - darwin
 archives:
   - replacements:
-#      darwin: Darwin
+      darwin: Darwin
       linux: Linux
-#      windows: Windows
+      windows: Windows
       386: i386
       amd64: x86_64
 checksum:

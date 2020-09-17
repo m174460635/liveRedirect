@@ -1,5 +1,3 @@
-// +build !darwin,!amd64 !darwin,!386 windows,amd64 windows,386 !linux,!386
-
 package jsengine
 
 import (
