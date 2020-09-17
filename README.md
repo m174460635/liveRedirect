@@ -2,6 +2,10 @@
 用于提供http重定向访问yy/huya直播间M3U8,FLV直播流的作用，让它可以在potplayerer之类的播放器中直接播放，不需要在网页中忍受各种弹窗浮层。
 
 http://项目ip:端口/platformName/房间id 的形式在potplayerer打开
+## 直接使用
+1、[release](https://github.com/linsongze/liveRedirect/releases) 下载
+2、根据对应的平台的运行（如果是linux，先chmod +x liveRedirect）
+
 
 ## 编译&运行
 1、安装golang环境
