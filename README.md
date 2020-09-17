@@ -7,6 +7,7 @@ http://项目ip:端口/platformName/房间id 的形式在potplayerer打开
 2、根据对应的平台的运行（如果是linux，先chmod +x liveRedirect）
 
 
+
 ## 编译&运行
 1、安装golang环境
 
@@ -69,28 +70,28 @@ docker run -d -p5000:5000 linsongze/liveredirect:1.0
 
 
 ### demo
-http://170.178.163.226:5000/huya/774810
+https://liveredirect-07f08d.asia1.kinto.io/huya/774810
 
 ### 在potplayer中用播放列表的形式打开
 
 将下面内容保存成playlist.dpl 然后就可以用potplayer 打开
 ```
 DAUMPLAYLIST
-playname=http://170.178.163.226:5000/huya/774810
+playname=https://liveredirect-07f08d.asia1.kinto.io/huya/774810
 playtime=4812
 topindex=0
 saveplaypos=0
-1*file*http://170.178.163.226:5000/huya/616702
+1*file*https://liveredirect-07f08d.asia1.kinto.io/huya/616702
 1*title*呆呆
-2*file*http://170.178.163.226:5000/huya/774810
+2*file*https://liveredirect-07f08d.asia1.kinto.io/huya/774810
 2*title*韩涵
 2*duration2*10539383
-3*file*http://170.178.163.226:5000/huya/599610
+3*file*https://liveredirect-07f08d.asia1.kinto.io/huya/599610
 3*title*像风
-4*file*http://170.178.163.226:5000/huya/912597
+4*file*https://liveredirect-07f08d.asia1.kinto.io/huya/912597
 4*title*小蒜
 4*duration2*19397155
-5*file*http://170.178.163.226:5000/huya/kx2020
+5*file*https://liveredirect-07f08d.asia1.kinto.io/huya/kx2020
 5*title*开心心
 5*duration2*10539383
 
