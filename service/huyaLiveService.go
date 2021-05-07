@@ -3,12 +3,13 @@ package service
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/asmcos/requests"
 	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/asmcos/requests"
 )
 
 type HuyaLiveService struct {
@@ -60,10 +61,12 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 	if len(res) > 0 { //有直播链接
 		u := res[1]
 		if len(u) > 0 {
-			if strings.Contains(u, "replay") { //重播
+			decodedRet, _ := base64.StdEncoding.DecodeString(u)
+			decodedUrl := string(decodedRet)
+			if strings.Contains(decodedUrl, "replay") { //重播
 				return "https:" + u, nil
 			} else {
-				liveLineUrl := live(u)
+				liveLineUrl := live(decodedUrl)
 				return "https:" + liveLineUrl, nil
 			}
 		}
