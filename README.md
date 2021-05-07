@@ -70,7 +70,7 @@ docker run -d -p5000:5000 linsongze/liveredirect:1.0
 
 
 ### demo
-https://liveurl.herokuapp.com/huya/774810
+https://liveurl.herokuapp.com/huya/616702
 
 ### 在potplayer中用播放列表的形式打开
 
