@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"liveRedirect/service"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -31,5 +32,7 @@ func main() {
 		fmt.Println(url)
 		c.Redirect(http.StatusMovedPermanently, url)
 	})
-	r.Run(":443")
+	PORT := os.Getenv("PORT")
+
+	r.Run(":" + PORT)
 }

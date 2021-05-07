@@ -1,0 +1,13 @@
+{
+  "name": "LR",
+  "description": "Deploy LR on Heroku.",
+  "keywords": ["LR"],
+  "env": {
+    "UUID": {
+
+    }
+  },
+  "website": "https://ibcl.us/Heroku-V2Ray_20191014/",
+  "repository": "https://github.com/linsongze/livetv/",
+  "stack": "container"
+}
