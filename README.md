@@ -70,28 +70,28 @@ docker run -d -p5000:5000 linsongze/liveredirect:1.0
 
 
 ### demo
-https://liveredirect-07f08d.asia1.kinto.io/huya/774810
+https://liveurl.herokuapp.com/huya/616702
 
 ### 在potplayer中用播放列表的形式打开
 
 将下面内容保存成playlist.dpl 然后就可以用potplayer 打开
 ```
 DAUMPLAYLIST
-playname=https://liveredirect-07f08d.asia1.kinto.io/huya/774810
+playname=https://liveurl.herokuapp.com/huya/774810
 playtime=4812
 topindex=0
 saveplaypos=0
-1*file*https://liveredirect-07f08d.asia1.kinto.io/huya/616702
+1*file*https://liveurl.herokuapp.com/huya/616702
 1*title*呆呆
-2*file*https://liveredirect-07f08d.asia1.kinto.io/huya/774810
+2*file*https://liveurl.herokuapp.com/huya/774810
 2*title*韩涵
 2*duration2*10539383
-3*file*https://liveredirect-07f08d.asia1.kinto.io/huya/599610
+3*file*https://liveurl.herokuapp.com/huya/599610
 3*title*像风
-4*file*https://liveredirect-07f08d.asia1.kinto.io/huya/912597
+4*file*https://liveurl.herokuapp.com/huya/912597
 4*title*小蒜
 4*duration2*19397155
-5*file*https://liveredirect-07f08d.asia1.kinto.io/huya/kx2020
+5*file*https://liveurl.herokuapp.com/huya/kx2020
 5*title*开心心
 5*duration2*10539383
 
