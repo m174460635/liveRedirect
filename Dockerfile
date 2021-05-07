@@ -8,6 +8,6 @@ FROM alpine:latest
 RUN apk --no-cache add libc6-compat libgcc libstdc++
 WORKDIR /root
 COPY --from=builder /go/src/github.com/linsongze/liveRedirect/lr .
-EXPOSE 5000
+EXPOSE 443
 VOLUME ["/root/data"]
 CMD ["./lr"]
