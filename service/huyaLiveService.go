@@ -56,7 +56,7 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 		return "", err
 	}
 	pageResult := resp.Text()
-	re := regexp.MustCompile(`liveLineUrl = "([\s\S]*?)";`)
+	re := regexp.MustCompile(`"liveLineUrl":"([\s\S]*?)",`)
 	res := re.FindStringSubmatch(pageResult)
 	if len(res) > 0 { //有直播链接
 		u := res[1]
@@ -67,6 +67,8 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 				return "https:" + u, nil
 			} else {
 				liveLineUrl := live(decodedUrl)
+				liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
+                		liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
 				return "https:" + liveLineUrl, nil
 			}
 		}
