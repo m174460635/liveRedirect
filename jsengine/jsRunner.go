@@ -23,7 +23,7 @@ import (
 //	}
 //	return result.String(), err
 //}
-func RunJSFunc2(jsContext, jsFunc string, args ...string) (string, error) {
+func RunJSFunc(jsContext, jsFunc string, args ...string) (string, error) {
 	vm := goja.New()
 	_, err := vm.RunString(jsContext)
 	if err != nil {
