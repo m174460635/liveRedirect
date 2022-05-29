@@ -36,6 +36,7 @@ docker run -d -p5000:5000 linsongze/liveredirect:1.0
 ### 已支持直播平台
 | platformName |  平台| 
 | :-----| ----: | 
+| douyu | 斗鱼 | 
 | huya | 虎牙 | 
 | yy | yy | 
 | huajiao | 花椒 | 
