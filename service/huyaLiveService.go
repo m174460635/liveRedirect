@@ -8,8 +8,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/asmcos/requests"
 )
 
 type HuyaLiveService struct {
@@ -47,33 +45,47 @@ func live(e string) string {
 	return url
 }
 func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
-	roomUrl := "https://m.huya.com/" + key
-	resp, err := requests.Get(roomUrl, requests.Header{"Content-Type": "application/x-www-form-urlencoded",
-		"User-Agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Mobile Safari/537.36 ",
-	})
+	//roomUrl := "https://m.huya.com/" + key
+	//resp, err := requests.Get(roomUrl, requests.Header{"Content-Type": "application/x-www-form-urlencoded",
+	//	"User-Agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Mobile Safari/537.36 ",
+	//})
+	//if err != nil {
+	//	fmt.Print(err.Error())
+	//	return "", err
+	//}
+	//pageResult := resp.Text()
+	//re := regexp.MustCompile(`"liveLineUrl":"([\s\S]*?)",`)
+	//res := re.FindStringSubmatch(pageResult)
+	//if len(res) > 0 { //有直播链接
+	//	u := res[1]
+	//	if len(u) > 0 {
+	//		decodedRet, _ := base64.StdEncoding.DecodeString(u)
+	//		decodedUrl := string(decodedRet)
+	//		if strings.Contains(decodedUrl, "replay") { //重播
+	//			return "https:" + u, nil
+	//		} else {
+	//			liveLineUrl := live(decodedUrl)
+	//			liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
+	//            		liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
+	//			return "https:" + liveLineUrl, nil
+	//		}
+	//	}
+	//}
+	urls, err := GetHuyaStreamUrls("https://www.huya.com/" + key)
 	if err != nil {
 		fmt.Print(err.Error())
 		return "", err
 	}
-	pageResult := resp.Text()
-	re := regexp.MustCompile(`"liveLineUrl":"([\s\S]*?)",`)
-	res := re.FindStringSubmatch(pageResult)
-	if len(res) > 0 { //有直播链接
-		u := res[1]
-		if len(u) > 0 {
-			decodedRet, _ := base64.StdEncoding.DecodeString(u)
-			decodedUrl := string(decodedRet)
-			if strings.Contains(decodedUrl, "replay") { //重播
-				return "https:" + u, nil
-			} else {
-				liveLineUrl := live(decodedUrl)
-				liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
-                		liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
-				return "https:" + liveLineUrl, nil
-			}
+	for _, v := range urls {
+		if strings.Contains(v, "http://al") {
+			return v, nil
 		}
 	}
-
+	for _, v := range urls {
+		if strings.HasPrefix(v, "http") {
+			return v, nil
+		}
+	}
 	return "", nil
 }
 func init() {
