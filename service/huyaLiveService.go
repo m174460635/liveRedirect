@@ -60,7 +60,7 @@ func live(e string) string {
 
     hash1 := GetMD5Hash(hashb)
 
-    url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&uid=1463993859134&seqid=%s&ratio=4000&txyp=%s&fs=%s&ctype=%s&ver=1&t=%s&sv=2107230339&sphdDC=%s&sphdcdn=%s&sphd=%s", i, hash1,wsTime,
+    url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&uid=1463993859134&seqid=%s&txyp=%s&fs=%s&ctype=%s&ver=1&t=%s&sv=2107230339&sphdDC=%s&sphdcdn=%s&sphd=%s", i, hash1,wsTime,
         seqid,n["txyp"],n["fs"],n["ctype"], n["t"],n["sphdDC"], n["sphdcdn"], n["sphd"])
     return url
 }
@@ -85,9 +85,13 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 				return "https:" + u, nil
 			} else {
 				liveLineUrl := live(decodedUrl)
-				liveLineUrl = strings.Replace(liveLineUrl, "bd.hls", "al.flv", -1)
-               			liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
-				return "https:" + liveLineUrl, nil
+                liveLineUrl = strings.Replace(liveLineUrl , "m3u8", "flv", -1)
+                if strings.Contains(liveLineUrl, "hw.hls"){
+                    return "https:" + liveLineUrl, nil
+                }else{
+                    liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
+                    return "https:" + liveLineUrl, nil
+                }
 			}
 		}
 	}
