@@ -3,6 +3,8 @@ package service
 import (
 	"encoding/base64"
 	"fmt"
+	"github.com/asmcos/requests"
+	"html"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -19,7 +21,9 @@ func live(e string) string {
 	r := strings.Split(i, "/")
 	re := regexp.MustCompile(".(flv|m3u8)")
 	s := re.ReplaceAllString(r[len(r)-1], "")
-	c := strings.SplitN(b, "&", 4)
+	srcAntiCode := html.UnescapeString(b)
+
+	c := strings.Split(srcAntiCode, "&")
 	cc := c[:0]
 	n := make(map[string]string)
 	for _, x := range c {
@@ -39,53 +43,37 @@ func live(e string) string {
 	t := "0"
 	h := p + "_" + t + "_" + s + "_" + f + "_" + l
 	m := GetMD5Hash(h)
-	y := c[len(c)-1]
-	url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&u=%s&seqid=%s&%s", i, m, l, t, f, y)
-
+	url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&u=%s&seqid=%s&txyp=%s&fs=%s&sphdcdn=%s&sphdDC=%s&sphd=%s&u=0&t=100&sv=", i, m, l, t, f, n["txyp"], n["fs"], n["sphdcdn"], n["sphdDC"], n["sphd"])
 	return url
 }
 func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
-	//roomUrl := "https://m.huya.com/" + key
-	//resp, err := requests.Get(roomUrl, requests.Header{"Content-Type": "application/x-www-form-urlencoded",
-	//	"User-Agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Mobile Safari/537.36 ",
-	//})
-	//if err != nil {
-	//	fmt.Print(err.Error())
-	//	return "", err
-	//}
-	//pageResult := resp.Text()
-	//re := regexp.MustCompile(`"liveLineUrl":"([\s\S]*?)",`)
-	//res := re.FindStringSubmatch(pageResult)
-	//if len(res) > 0 { //有直播链接
-	//	u := res[1]
-	//	if len(u) > 0 {
-	//		decodedRet, _ := base64.StdEncoding.DecodeString(u)
-	//		decodedUrl := string(decodedRet)
-	//		if strings.Contains(decodedUrl, "replay") { //重播
-	//			return "https:" + u, nil
-	//		} else {
-	//			liveLineUrl := live(decodedUrl)
-	//			liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
-	//            		liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
-	//			return "https:" + liveLineUrl, nil
-	//		}
-	//	}
-	//}
-	urls, err := GetHuyaStreamUrls("https://www.huya.com/" + key)
+	roomUrl := "https://m.huya.com/" + key
+	resp, err := requests.Get(roomUrl, requests.Header{"Content-Type": "application/x-www-form-urlencoded",
+		"User-Agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Mobile Safari/537.36 ",
+	})
 	if err != nil {
 		fmt.Print(err.Error())
 		return "", err
 	}
-	for _, v := range urls {
-		if strings.Contains(v, "http://al") {
-			return v, nil
+	pageResult := resp.Text()
+	re := regexp.MustCompile(`"liveLineUrl":"([\s\S]*?)",`)
+	res := re.FindStringSubmatch(pageResult)
+	if len(res) > 0 { //有直播链接
+		u := res[1]
+		if len(u) > 0 {
+			decodedRet, _ := base64.StdEncoding.DecodeString(u)
+			decodedUrl := string(decodedRet)
+			if strings.Contains(decodedUrl, "replay") { //重播
+				return "https:" + u, nil
+			} else {
+				liveLineUrl := live(decodedUrl)
+				liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
+				liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
+				return "https:" + liveLineUrl, nil
+			}
 		}
 	}
-	for _, v := range urls {
-		if strings.HasPrefix(v, "http") {
-			return v, nil
-		}
-	}
+
 	return "", nil
 }
 func init() {
