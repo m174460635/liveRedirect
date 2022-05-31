@@ -16,7 +16,7 @@ type HuyaLiveService struct {
 }
 
 func live(e string) string {
-	i := strings.Split(e, "?")[0]
+    i := strings.Split(e, "?")[0]
     b := strings.Split(e, "?")[1]
     r := strings.Split(i, "/")
     re := regexp.MustCompile(".(flv|m3u8)")
@@ -24,11 +24,8 @@ func live(e string) string {
     srcAntiCode := html.UnescapeString(b)
   
     c := strings.Split(srcAntiCode, "&")
-
     cc := c[:0]
-
     n := make(map[string]string)
-
     for _, x := range c {
         if len(x) > 0 {
             cc = append(cc, x)
@@ -36,32 +33,17 @@ func live(e string) string {
             n[ss[0]] = ss[1]
         }
     }
-   
     c = cc
-
     fm, _ := url.QueryUnescape(n["fm"])
-
     uu, _ := base64.StdEncoding.DecodeString(fm)
-
     u := string(uu)
-
     p := strings.Split(u, "_")[0]
-
-    seqid := strconv.FormatInt(time.Now().UnixNano()/100, 10)
-
-    wsTime := n["wsTime"]
-
-
-    hasha := seqid + "|" + n["ctype"] + "|" + n["t"]
-
-    hash0 := GetMD5Hash(hasha)
-
-    hashb := p + "_" + "1463993859134" + "_" + s + "_" + hash0 + "_" + wsTime
-
-    hash1 := GetMD5Hash(hashb)
-
-    url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&uid=1463993859134&seqid=%s&txyp=%s&fs=%s&ctype=%s&ver=1&t=%s&sv=2107230339&sphdDC=%s&sphdcdn=%s&sphd=%s", i, hash1,wsTime,
-        seqid,n["txyp"],n["fs"],n["ctype"], n["t"],n["sphdDC"], n["sphdcdn"], n["sphd"])
+    f := strconv.FormatInt(time.Now().UnixNano()/100, 10)
+    l := n["wsTime"]
+    t := "0"
+    h := p + "_" + t + "_" + s + "_" + f + "_" + l
+    m := GetMD5Hash(h)   
+    url := fmt.Sprintf("%s?wsSecret=%s&wsTime=%s&u=%s&seqid=%s&txyp=%s&fs=%s&sphdcdn=%s&sphdDC=%s&sphd=%s&u=0&t=100&sv=", i, m, l, t, f, n["txyp"],n["fs"],n["sphdcdn"],n["sphdDC"],n["sphd"])
     return url
 }
 func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
@@ -85,13 +67,9 @@ func (s *HuyaLiveService) GetPlayUrl(key string) (string, error) {
 				return "https:" + u, nil
 			} else {
 				liveLineUrl := live(decodedUrl)
-                liveLineUrl = strings.Replace(liveLineUrl , "m3u8", "flv", -1)
-                if strings.Contains(liveLineUrl, "hw.hls"){
-                    return "https:" + liveLineUrl, nil
-                }else{
-                    liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
-                    return "https:" + liveLineUrl, nil
-                }
+                liveLineUrl = strings.Replace(liveLineUrl, "hls", "flv", -1)
+                liveLineUrl = strings.Replace(liveLineUrl, "m3u8", "flv", -1)
+                return "https:" + liveLineUrl, nil
 			}
 		}
 	}
