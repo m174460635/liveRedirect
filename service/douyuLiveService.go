@@ -106,7 +106,7 @@ func (s *DouyuLiveService) GetPlayUrl(key string) (string, error) {
 	if len(target) <= 0 {
 		return "", nil
 	}
-	return "http://vplay3a.douyucdn.cn/live/" + target + ".flv?uuid=", nil
+	return "http://akm-tct.douyucdn.cn/live/" + target + ".flv?uuid=", nil
 }
 
 func getRealKey(key string) (string, string, error) {
